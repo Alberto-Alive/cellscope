@@ -21,3 +21,4 @@ def validate_adata(adata: AnnData):
         warnings.append("Cell names are not unique")
 
     if adata.X is None:
+        errors.append("Dataset is missing an expression matrix: adata.X")
