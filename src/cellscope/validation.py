@@ -2,7 +2,10 @@ from anndata import AnnData
 
 def validate_file(adata: AnnData):
     warnings = []
+    errors = []
+    summary = []
 
+    
     if adata.n_obs < 1:
         raise ValueError(f"The file must have at least one cell/row: {adata.n_obs}")
     
