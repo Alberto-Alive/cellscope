@@ -1,3 +1,6 @@
+import json
+
+
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(prog="scpipe")
     sub = parser.add_subparsers(dest="command", required=True)
@@ -10,4 +13,5 @@ def main(argv: list[str] | None = None) -> int:
         adata = io.read_file(args.input)
         validated_adata = validation.validate_adata(adata)
         print(f"Validation summary: {validated_adata}")
+        print(json.dumps(validated_adata, indent=1))
     return 0
