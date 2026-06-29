@@ -22,3 +22,7 @@ def validate_adata(adata: AnnData):
 
     if adata.X is None:
         errors.append("Dataset is missing an expression matrix: adata.X")
+
+    useful_obs_columns = ["batch", "sample", "condition"]
+
+    missing_useful_columns = [col for col in useful_obs_columns if col not in adata.obs.columns]
