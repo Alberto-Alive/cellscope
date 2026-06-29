@@ -26,3 +26,13 @@ def validate_adata(adata: AnnData):
     useful_obs_columns = ["batch", "sample", "condition"]
 
     missing_useful_columns = [col for col in useful_obs_columns if col not in adata.obs.columns]
+
+    if missing_useful_columns:
+        warnings.append(f"Missing useful columns {missing_useful_columns}")
+
+    return {
+        "is_valid": len(errors) == 0,
+        "errors": errors,
+        "warnings": warnings,
+        "summary": summary
+    }
