@@ -1,16 +1,16 @@
 from anndata import AnnData
 
-def validate_file(adata: AnnData):
+def validate_adata(adata: AnnData):
     warnings = []
     errors = []
-    summary = []
+    summary = {}
 
-    
+
     if adata.n_obs < 1:
-        raise ValueError(f"The file must have at least one cell/row: {adata.n_obs}")
+        errors.append(f"The dataset must have at least one cell/row: {adata.n_obs}")
     
     if adata.n_vars < 1:
-        raise ValueError(f"The file must contain at least one gene/column: {adata.n_vars}")
+        errors.append(f"The dataset must contain at least one gene/column: {adata.n_vars}")
 
     if not adata.var_names.is_unique:
         duplicate_genes = adata.var_names[adata.var_names.duplicated()].unique().tolist()
