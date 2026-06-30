@@ -2,7 +2,7 @@ import json
 
 
 def main(argv: list[str] | None = None) -> int:
-    parser = argparse.ArgumentParser(prog="scpipe")
+    parser = argparse.ArgumentParser(prog="cellscope")
     sub = parser.add_subparsers(dest="command", required=True)
 
     inspect = sub.add_parser("inspect", help="Inspect pipeline e2e")
