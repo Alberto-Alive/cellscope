@@ -29,8 +29,8 @@ def validate_adata(adata: AnnData):
         warnings.append(f"Missing useful columns {missing_useful_columns}")
 
     summary = {
-        "n_obs": adata.n_obs,
-        "n_vars": adata.n_vars,
+        "n_cells": adata.n_obs,
+        "n_genes": adata.n_vars,
         "is_valid": len(errors) == 0,
         "n_errors": len(errors),
         "n_warnings": len(warnings),
