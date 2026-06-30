@@ -3,8 +3,6 @@ from anndata import AnnData
 def validate_adata(adata: AnnData):
     warnings = []
     errors = []
-    summary = {}
-
 
     if adata.n_obs < 1:
         errors.append(f"The dataset must have at least one cell/row: {adata.n_obs}")
@@ -18,10 +16,10 @@ def validate_adata(adata: AnnData):
     
     if not adata.obs_names.is_unique:
         duplicate_cells = adata.obs_names[adata.obs_names.duplicated()].unique().tolist()
-        warnings.append("Cell names are not unique")
+        warnings.append(f"Cell names are not unique {duplicate_cells}")
 
     if adata.X is None:
-        errors.append("Dataset is missing an expression matrix: adata.X")
+        errors.append(f"Dataset is missing an expression matrix: {adata.X}")
 
     useful_obs_columns = ["batch", "sample", "condition"]
 
@@ -29,6 +27,16 @@ def validate_adata(adata: AnnData):
 
     if missing_useful_columns:
         warnings.append(f"Missing useful columns {missing_useful_columns}")
+
+    summary = {
+        "n_obs": adata.n_obs,
+        "n_vars": adata.n_vars,
+        "is_valid": len(errors) == 0,
+        "n_errors": len(errors),
+        "n_warnings": len(warnings),
+        "errors": errors,
+        "warnings": warnings
+    }
 
     return {
         "is_valid": len(errors) == 0,
