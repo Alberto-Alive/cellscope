@@ -106,4 +106,16 @@ def test_missing_useful_columns_warning():
     )
 
 
-def 
+def test_validate_adata_returns_dictionary_report():
+    adata = make_adata()
+    report = validate_adata(adata)
+
+
+    assert isinstance(report, dict)
+
+    assert "is_valid" in report
+    assert "errors" in report
+    assert "warnings" in report
+    assert "summary" in report
+
+    
