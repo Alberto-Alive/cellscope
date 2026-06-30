@@ -91,5 +91,19 @@ def test_duplicate_cell_names_warning():
 
 def test_missing_useful_columns_warning():
     adata = make_adata(
-        n_cells
+        n_cells=3,
+        n_genes=4,
+        obs_columns={}
     )
+
+    report = validate_adata(adata)
+
+
+    assert report["is_valid"] is True
+    assert any(
+        "Missing useful columns" in warning
+        for warning in report["warnings"]
+    )
+
+
+def 
