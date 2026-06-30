@@ -2,7 +2,7 @@ import numpy as np
 import pandas as pd
 from anndata import AnnData
 
-from validation import validate_adata
+from cellscope.validation import validate_adata
 
 
 def make_adata(
@@ -30,7 +30,7 @@ def make_adata(
     obs = pd.DataFrame(obs_columns, index=obs_names)
     var = pd.DataFrame(index=var_names)
 
-    return AnnData(X=X, abos=obs, var=var)
+    return AnnData(X=X, obs=obs, var=var)
 
 
 def test_valid_adata_passes():
