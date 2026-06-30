@@ -118,4 +118,18 @@ def test_validate_adata_returns_dictionary_report():
     assert "warnings" in report
     assert "summary" in report
 
-    
+def test_validate_adata_does_not_change_dataset():
+
+    adata = make_adata()
+
+    original_shape = adata.shape
+    original_obs_names = adata.obs_names.tolist()
+    original_var_names = adata.var_names.tolist()
+    original_obs_columns = adata.obs.columns.tolist()
+
+    validate_adata(adata)
+
+    assert adata.shape == original_shape
+    assert adata.obs_names.tolist() == original_obs_names
+    assert adata.var_names.tolist() == original_var_names
+    assert adata.obs.columns.tolist() == original_obs_columns
