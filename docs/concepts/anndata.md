@@ -21,3 +21,28 @@ adata.layers    alternative amtrices
 adata.obsm      embeddings like PCA, UMAP, scVI  -> obsm means observation matrices :))
 adata.uns       unstructured analysis outputs
 ```
+
+
+### `adata.X`
+
+Important question lol
+
+> Does `adata.X` contain raw counts, normalized values, or log-trasnformed values?
+
+-> matters bcs different pipelines steps expect different forms of data.
+
+
+### `adata.obs`
+
+Cell metadata example:
+
+```text
+sampel_id
+donor_id
+batch
+condition
+cell_type
+n_genes_by_counts
+total_counts
+pct_counts_mt
+```
