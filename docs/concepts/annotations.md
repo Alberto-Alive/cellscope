@@ -37,3 +37,19 @@ long list... basically each cell type has a prominent rna expression
 ## Some bio important distinction
 
 Cell type is not the same as cell state.. of course.
+
+
+## What can go wrong
+
+pretty much anything...
+
+
+- using one marker gene only
+
+- marker gene missing because dropout
+- doublets look like hybrid cell types
+- batch effects create fake clusters
+- over-specific labels without evidence
+- cell states mistaken for cell types
+- reference dataset does not match the tissue/disease context
+
