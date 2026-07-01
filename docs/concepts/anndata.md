@@ -46,3 +46,48 @@ n_genes_by_counts
 total_counts
 pct_counts_mt
 ```
+
+### `adata.var`
+
+Gene metadata, for example:
+
+```text
+gene_symbol
+gene_id
+highly_variable
+mt
+```
+
+### `adata.layers`
+
+Alternative matrices:
+
+```text
+adata.layers["counts"]
+adata.layers["normalized"]
+```
+
+### `adata.obsm`
+
+Cell embeddings:
+
+```text
+adata.obsm["X_pca"]
+adata.obsm["X_umap"]
+adata.obsm["X_scVI"]
+```
+
+
+## What can go wrong?
+
+... so much lol
+
+- `adata.X` does not contain what you think it contains
+- raw counts were overwritten
+- cell IDs are duplciated
+- gene IDs are duplicated
+- batch or donor labels are wrong
+- gene symbols and gene IDs are mixed up
+- sparse matrices are accidentally converted to dense matrices
+- embeddings are stale after filtering cells
+
